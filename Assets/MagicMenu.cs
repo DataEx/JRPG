@@ -44,9 +44,13 @@ public class MagicMenu : Menu
         {
             case MenuOptions.Fire:
                 print("Use Fire on " + target.name);
+                uint damageDealt = fire.ActivateMagic(target);
+                inputController.damageVisualizer.SpawnDamageText(target, damageDealt, false);               
                 break;
             case MenuOptions.Heal:
                 print("Use Heal on " + target.name);
+                uint healingDone = heal.ActivateMagic(target);
+                inputController.damageVisualizer.SpawnDamageText(target, healingDone, true);
                 break;
         }
     }

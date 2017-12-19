@@ -11,8 +11,9 @@ public class InputController : MonoBehaviour {
     public MoveChooserController moveChooser;
     public MagicMenu magicMenu;
     public ItemMenu itemMenu;
-
     public CharacterPointer characterPointer;
+    public DamageVisualizer damageVisualizer;
+
 
     Menu activeMenu;
 
@@ -36,11 +37,13 @@ public class InputController : MonoBehaviour {
                 // Select target
                 activeMenu.RunMenuOption(cursor.GetCursorIndex(), characterPointer.GetTarget());
                 characterPointer.DisablePointer();
+                characterPointer.ResetCameraTransform();
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // Return to normal UI
                 characterPointer.DisablePointer();
+                characterPointer.ResetCameraTransform();
             }
         }
         else
