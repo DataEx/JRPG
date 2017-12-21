@@ -40,17 +40,23 @@ public class MagicMenu : Menu
 
     public override void RunMenuOption(int menuOptionIndex, Character target)
     {
+        Player caster = inputController.playerInfo.owner;
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Fire:
-                print("Use Fire on " + target.name);
-                uint damageDealt = fire.ActivateMagic(target);
-                inputController.damageVisualizer.SpawnDamageText(target, damageDealt, false);               
+                if (caster.HaveEnoughMana(fire.manaCost)) {
+                    print("Use Fire on " + target.name);
+                    uint damageDealt = fire.UseAction(target, inputController.playerInfo.owner);
+                    caster.SpendMana(fire.manaCost);
+                }
                 break;
             case MenuOptions.Heal:
-                print("Use Heal on " + target.name);
-                uint healingDone = heal.ActivateMagic(target);
-                inputController.damageVisualizer.SpawnDamageText(target, healingDone, true);
+                if (caster.HaveEnoughMana(heal.manaCost))
+                {
+                    print("Use Heal on " + target.name);
+                    uint healingDone = heal.UseAction(target, inputController.playerInfo.owner);
+                    caster.SpendMana(heal.manaCost);
+                }
                 break;
         }
     }

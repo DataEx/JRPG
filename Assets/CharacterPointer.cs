@@ -7,8 +7,8 @@ public class CharacterPointer : MonoBehaviour {
 
     public GameObject pointerObject;
     public Camera mainCamera;
-    public Player[] players;
-    public Enemy[] enemies;
+    List<Player> players;
+    List<Enemy> enemies;
     public float heightAbovePlayer;
     Character target;
 
@@ -22,6 +22,9 @@ public class CharacterPointer : MonoBehaviour {
     void Start () {
         defaultPosition = mainCamera.transform.position;
         defaultRotation = mainCamera.transform.rotation;
+        players = BattleQueue.players;
+        enemies = BattleQueue.enemies;
+
     }
 
     public void SetInitialTargetPlayer() {
@@ -46,30 +49,30 @@ public class CharacterPointer : MonoBehaviour {
     }
 
     void AdvancePointerForwardPlayer() {
-        int currentIndex = Array.IndexOf(players, target);
-        currentIndex = (currentIndex + 1) % players.Length;
+        int currentIndex = players.IndexOf((Player)target);
+        currentIndex = (currentIndex + 1) % players.Count;
         SetTarget(players[currentIndex]);
     }
     void AdvancePointerBackwardPlayer()
     {
-        int currentIndex = Array.IndexOf(players, target);
+        int currentIndex = players.IndexOf((Player)target);
         currentIndex = currentIndex - 1;
         if (currentIndex < 0)
-            currentIndex = players.Length - 1;
+            currentIndex = players.Count - 1;
         SetTarget(players[currentIndex]);
     }
     void AdvancePointerForwardEnemy()
     {
-        int currentIndex = Array.IndexOf(enemies, target);
-        currentIndex = (currentIndex + 1) % enemies.Length;
+        int currentIndex = enemies.IndexOf((Enemy)target);
+        currentIndex = (currentIndex + 1) % enemies.Count;
         SetTarget(enemies[currentIndex]);
     }
     void AdvancePointerBackwardEnemy()
     {
-        int currentIndex = Array.IndexOf(enemies, target);
+        int currentIndex = enemies.IndexOf((Enemy)target);
         currentIndex = currentIndex - 1;
         if (currentIndex < 0)
-            currentIndex = enemies.Length - 1;
+            currentIndex = enemies.Count - 1;
         SetTarget(enemies[currentIndex]);
     }
     
@@ -97,7 +100,6 @@ public class CharacterPointer : MonoBehaviour {
 
     public void MoveToCharacter(Character character)
     {
-        print(character);
         StartCoroutine(MoveToCharacterCoroutine(character));
     }
 

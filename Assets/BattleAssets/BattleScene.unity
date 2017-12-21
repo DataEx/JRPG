@@ -342,8 +342,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873616d2752498e49bd30d555294c051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 150
+  initialHealth: 200
   initialMana: 1000
+  basicAttack:
+    name: Attack
+    manaCost: 0
+    damage: 100
+    isHealing: 0
+  actions:
+  - name: Attack
+    manaCost: 0
+    damage: 100
+    isHealing: 0
 --- !u!1 &287101801
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +444,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 1000
-  initialMana: 100
+  initialMana: 10000
+  basicAttack:
+    name: Attack
+    manaCost: 0
+    damage: 100
+    isHealing: 0
   playerInfo: {fileID: 1678697049}
 --- !u!1 &334136641
 GameObject:
@@ -511,68 +526,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 334136641}
---- !u!1 &534882838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 534882841}
-  - component: {fileID: 534882840}
-  - component: {fileID: 534882839}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &534882839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534882838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &534882840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534882838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
---- !u!4 &534882841
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534882838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629206536
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &940815388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1415,11 +1368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointerObject: {fileID: 1046113966}
   mainCamera: {fileID: 1917745905}
-  players:
-  - {fileID: 324861231}
-  enemies:
-  - {fileID: 1163887044}
-  - {fileID: 245338315}
   heightAbovePlayer: 2
   timeToMove: 0.5
   cameraOffset: {x: 1, y: 1.5, z: 3}
@@ -1528,6 +1476,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 200
   initialMana: 1000
+  basicAttack:
+    name: Attack
+    manaCost: 0
+    damage: 100
+    isHealing: 0
+  actions:
+  - name: Attack
+    manaCost: 0
+    damage: 100
+    isHealing: 0
 --- !u!1 &1187809882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,6 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 932217967}
   owner: {fileID: 324861231}
+  inputController: {fileID: 215433082}
   healthBar:
     fill: {fileID: 1481343401}
     text: {fileID: 1618138662}
@@ -2413,7 +2372,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2653,6 +2612,51 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801900396}
+--- !u!1 &1804571795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1804571797}
+  - component: {fileID: 1804571796}
+  m_Layer: 0
+  m_Name: BattleQueue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1804571796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1804571795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c49cb75cbc5d2c4aacec425f697ace4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  publicPlayers:
+  - {fileID: 324861231}
+  publicEnemies:
+  - {fileID: 1163887044}
+  - {fileID: 245338315}
+--- !u!4 &1804571797
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1804571795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811357726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,13 +2711,13 @@ MonoBehaviour:
   inputController: {fileID: 215433082}
   fire:
     name: Fire
-    manaCost: 12
-    damage: 200
+    manaCost: 20
+    damage: 100
     isHealing: 0
   heal:
     name: Heal
-    manaCost: 20
-    damage: 300
+    manaCost: 15
+    damage: 150
     isHealing: 1
 --- !u!114 &1811357729
 MonoBehaviour:

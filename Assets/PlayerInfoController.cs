@@ -8,6 +8,7 @@ public class PlayerInfoController : MonoBehaviour {
 
     public Text playerNameText;
     public Player owner;
+    public InputController inputController;
 
     [Serializable]
     public class Bar
@@ -48,16 +49,24 @@ public class PlayerInfoController : MonoBehaviour {
     }
 
     public void IncreaseHealth(uint healthGained) {
-        healthBar.CurrentValue = (uint)Mathf.Min(healthBar.CurrentValue + healthGained, healthBar.MaxValue);\
+        healthBar.CurrentValue = (uint)Mathf.Min(healthBar.CurrentValue + healthGained, healthBar.MaxValue);
         healthBar.Update();
     }
     public void DecreaseHealth(uint healthLost) {
-        //
+        healthBar.CurrentValue = healthBar.CurrentValue - healthLost;
+        if (healthBar.CurrentValue > healthBar.MaxValue)
+            healthBar.CurrentValue = 0;
+        healthBar.Update();
     }
     public void IncreaseMana(uint manaGained) {
         manaBar.CurrentValue = (uint)Mathf.Min(manaBar.CurrentValue + manaGained, manaBar.MaxValue);
         manaBar.Update();
     }
-    public void DecreaseMana(uint manaLost) { }
-
+    public void DecreaseMana(uint manaLost)
+    {
+        manaBar.CurrentValue = manaBar.CurrentValue - manaLost;
+        if (manaBar.CurrentValue > manaBar.MaxValue)
+            manaBar.CurrentValue = 0;
+        manaBar.Update();
+    }
 }

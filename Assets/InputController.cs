@@ -18,7 +18,8 @@ public class InputController : MonoBehaviour {
     Menu activeMenu;
 
     void Awake() {
-        activeMenu = moveChooser;
+//        activeMenu = moveChooser;
+       // ReturnToBaseMenu();
     }
 
     void Update() {
@@ -83,14 +84,15 @@ public class InputController : MonoBehaviour {
         Transform prevCursorItem = activeMenu.GetPrevCursorItem(cursorIndex);
         cursor.SetCursorPosition(prevCursorItem);
     }
-    void ReturnToBaseMenu()
+    public void ReturnToBaseMenu()
     {
         if(activeMenu != moveChooser)
             SwitchMenu(moveChooser);
     }
     public void SwitchMenu(Menu newMenu) {
-        cursor.PlaySound();
-        activeMenu.gameObject.SetActive(false);
+        //cursor.PlaySound();
+        if (activeMenu != null)
+            activeMenu.gameObject.SetActive(false);
         newMenu.gameObject.SetActive(true);
         activeMenu = newMenu;
 

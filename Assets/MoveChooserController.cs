@@ -42,10 +42,16 @@ public class MoveChooserController : Menu {
 
     public override void RunMenuOption(int menuOptionIndex, Character target)
     {
+        Player owner = inputController.playerInfo.owner;
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Attack:
                 print("Attack " + target.name);
+                uint damageDone = owner.basicAttack.UseAction(target, owner);
+                break;
+            case MenuOptions.Defend:
+                print("Defending");
+                owner.Defend();
                 break;
         }
     }
