@@ -2,33 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Action
+public class Action : MonoBehaviour
 {
-    public string name;
+    public string actionName;
     public uint manaCost;
     public uint damage;
     public bool isHealing;
 
+
     // Returns damage dealt
-    public virtual uint UseAction(Character target, Character caster)
+    public virtual void UseAction(Character target, Character caster)
     {
         uint damageDealt = GetDamage();
         if (isHealing)
             target.Heal(damageDealt);
         else
         {
-            damageDealt = (uint) (damageDealt * target.GetDefenseMultiplier());
+            damageDealt = (uint) (damageDealt * (1f /target.GetDefenseMultiplier()));
             target.DealDamage(damageDealt);
         }
+        print(caster + " dealt " + damageDealt + " damage to " + target);
         DamageVisualizer.SpawnDamageText(target, damageDealt, isHealing);
-
-        FinishAction();
-        return damageDealt;
+        AnimateAction(target);
     }
 
     // Returns damage dealt
-    public uint GetDamage()
+    public virtual uint GetDamage()
     {
         float rangePercentage = 0.1f; // 10% deviation from base damage
         float minDamage = damage * (1 - rangePercentage);
@@ -40,5 +39,12 @@ public class Action
     public virtual void FinishAction()
     {
         BattleQueue.Pop();
+    }
+
+    public virtual void AnimateAction(Character target)
+    {
+        FinishAction();
+        // unique for each
+        // when done, call finish action
     }
 }

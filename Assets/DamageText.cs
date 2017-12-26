@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class DamageText : MonoBehaviour {
     public Camera facingCamera;
-    public Character attachedCharacter;
+    Vector3 startingPosition;
     public Vector3 characterOffset;
     public float timeVisible = 2f;
     public float heightRaised = 1f;
@@ -16,7 +16,7 @@ public class DamageText : MonoBehaviour {
         facingCamera = camera;
     }
     public void SetCharacter(Character character) {
-        attachedCharacter = character;
+        startingPosition = character.transform.position;
     }
     public void SetValue(uint value) {
         this.GetComponent<TextMeshProUGUI>().text = value.ToString();
@@ -25,7 +25,7 @@ public class DamageText : MonoBehaviour {
         this.GetComponent<TextMeshProUGUI>().color = Color.green;
     }
     void Start() {
-        this.transform.position = attachedCharacter.transform.position;
+        this.transform.position = startingPosition;
         StartCoroutine(RaiseText());
     }
 

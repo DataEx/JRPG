@@ -47,7 +47,7 @@ public class InputController : MonoBehaviour {
                 characterPointer.ResetCameraTransform();
             }
         }
-        else
+        else if(activeMenu != null)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -101,5 +101,10 @@ public class InputController : MonoBehaviour {
     }
     bool IsPointingAtCharacters() {
         return characterPointer.IsPointerActive();
+    }
+    public void DisableMenu()
+    {
+        activeMenu.gameObject.SetActive(false);
+        activeMenu = null;
     }
 }

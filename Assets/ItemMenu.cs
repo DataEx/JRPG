@@ -46,12 +46,15 @@ public class ItemMenu : Menu {
         {
             case MenuOptions.Potion:
                 print("Use Potion on " + target.name);
+                potion.UseAction(target, inputController.playerInfo.owner);
                 break;
             case MenuOptions.Ether:
                 print("Use Ether on " + target.name);
+                ether.UseAction(target, inputController.playerInfo.owner);
                 break;
             case MenuOptions.Grenade:
                 print("Use Grenade on " + target.name);
+                grenade.UseAction(target, inputController.playerInfo.owner);
                 break;
         }
     }

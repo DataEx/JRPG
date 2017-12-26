@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
+public class Item : Action {
 
-
+    public override uint GetDamage()
+    {
+        return damage;
+    }
 }

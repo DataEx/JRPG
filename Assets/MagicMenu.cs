@@ -46,16 +46,16 @@ public class MagicMenu : Menu
             case MenuOptions.Fire:
                 if (caster.HaveEnoughMana(fire.manaCost)) {
                     print("Use Fire on " + target.name);
-                    uint damageDealt = fire.UseAction(target, inputController.playerInfo.owner);
                     caster.SpendMana(fire.manaCost);
+                    fire.UseAction(target, inputController.playerInfo.owner);
                 }
                 break;
             case MenuOptions.Heal:
                 if (caster.HaveEnoughMana(heal.manaCost))
                 {
                     print("Use Heal on " + target.name);
-                    uint healingDone = heal.UseAction(target, inputController.playerInfo.owner);
                     caster.SpendMana(heal.manaCost);
+                    heal.UseAction(target, inputController.playerInfo.owner);
                 }
                 break;
         }

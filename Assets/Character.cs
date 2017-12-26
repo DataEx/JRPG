@@ -8,17 +8,14 @@ public class Character : MonoBehaviour {
     protected uint currentHealth;
     protected uint currentMana;
     protected float defenseMultiplier = 1f;
-    public Action basicAttack;
 
-    void Awake() {
+    public virtual void Awake() {
         currentHealth = initialHealth;
         currentMana = initialMana;
-
     }
 
     public virtual void DealDamage(uint damage) {
         currentHealth = currentHealth - damage;
-        print("Current health: " + currentHealth);
         if (currentHealth > initialHealth)
         {
             DestroySelf();
@@ -49,8 +46,7 @@ public class Character : MonoBehaviour {
     void DestroySelf()
     {
         print(this.name + " is dead!");
-        BattleQueue.RemoveCharacter(this);
-        Destroy(this.gameObject, 0.25f);
+        BattleQueue.SetToRemoveCharacter(this);
     }
 
     public virtual void StartTurn(){}

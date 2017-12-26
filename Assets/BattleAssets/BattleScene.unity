@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &57911190
 Light:
   m_ObjectHideFlags: 0
@@ -205,6 +205,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &112668056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 112668057}
+  - component: {fileID: 112668059}
+  - component: {fileID: 112668058}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &112668057
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112668056}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1190333085}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 750, y: 80}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &112668058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112668056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 41
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 6
+    m_MaxSize: 41
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &112668059
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112668056}
 --- !u!1 &142277395
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,16 +418,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 200
   initialMana: 1000
-  basicAttack:
-    name: Attack
-    manaCost: 0
-    damage: 100
-    isHealing: 0
   actions:
-  - name: Attack
-    manaCost: 0
-    damage: 100
-    isHealing: 0
+  - {fileID: 245338316}
+--- !u!114 &245338316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 245338314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fdf996edac09f458056a6602e4ed44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Basic Attack
+  manaCost: 0
+  damage: 100
+  isHealing: 0
 --- !u!1 &287101801
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,12 +526,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 1000
   initialMana: 10000
-  basicAttack:
-    name: Attack
-    manaCost: 0
-    damage: 100
-    isHealing: 0
+  basicAttack: {fileID: 324861232}
   playerInfo: {fileID: 1678697049}
+--- !u!114 &324861232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 324861230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fdf996edac09f458056a6602e4ed44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Basic Attack
+  manaCost: 0
+  damage: 100
+  isHealing: 0
 --- !u!1 &334136641
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +1057,9 @@ GameObject:
   - component: {fileID: 1106135873}
   - component: {fileID: 1106135872}
   - component: {fileID: 1106135871}
+  - component: {fileID: 1106135876}
+  - component: {fileID: 1106135875}
+  - component: {fileID: 1106135874}
   m_Layer: 5
   m_Name: Item Choice Submenu
   m_TagString: Untagged
@@ -1007,9 +1102,9 @@ MonoBehaviour:
   - {fileID: 287101802}
   - {fileID: 1997176797}
   inputController: {fileID: 215433082}
-  potion: {fileID: 0}
-  ether: {fileID: 0}
-  grenade: {fileID: 0}
+  potion: {fileID: 1106135876}
+  ether: {fileID: 1106135875}
+  grenade: {fileID: 1106135874}
 --- !u!114 &1106135872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,6 +1138,51 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106135869}
+--- !u!114 &1106135874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106135869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Grenade
+  manaCost: 0
+  damage: 80
+  isHealing: 0
+--- !u!114 &1106135875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106135869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Ether
+  manaCost: 0
+  damage: 50
+  isHealing: 1
+--- !u!114 &1106135876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106135869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Potion
+  manaCost: 0
+  damage: 200
+  isHealing: 1
 --- !u!1001 &1107719253
 Prefab:
   m_ObjectHideFlags: 0
@@ -1476,16 +1616,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 200
   initialMana: 1000
-  basicAttack:
-    name: Attack
-    manaCost: 0
-    damage: 100
-    isHealing: 0
   actions:
-  - name: Attack
-    manaCost: 0
-    damage: 100
-    isHealing: 0
+  - {fileID: 1163887045}
+--- !u!114 &1163887045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1163887043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c2b048cbe97f148997ec508ac3f236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Aerial Strike
+  manaCost: 0
+  damage: 200
+  isHealing: 0
+  actionPrefab: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
+--- !u!114 &1163887046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1163887043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fdf996edac09f458056a6602e4ed44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Basic Attack
+  manaCost: 0
+  damage: 100
+  isHealing: 0
 --- !u!1 &1187809882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1723,96 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187809882}
+--- !u!1 &1190333084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1190333085}
+  - component: {fileID: 1190333088}
+  - component: {fileID: 1190333087}
+  - component: {fileID: 1190333086}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1190333085
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1190333084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 112668057}
+  m_Father: {fileID: 1300150521}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 171}
+  m_SizeDelta: {x: 750, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1190333086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1190333084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7686cba88753854f84f7ac00e934a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameText: {fileID: 112668058}
+  owner: {fileID: 324861231}
+  inputController: {fileID: 215433082}
+  healthBar:
+    fill: {fileID: 0}
+    text: {fileID: 0}
+  manaBar:
+    fill: {fileID: 0}
+    text: {fileID: 0}
+--- !u!114 &1190333087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1190333084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1190333088
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1190333084}
 --- !u!1 &1197639159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1946,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1300150520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1300150521}
+  - component: {fileID: 1300150522}
+  m_Layer: 0
+  m_Name: ActionDetail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1300150521
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1300150520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1190333085}
+  m_Father: {fileID: 1558843808}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1300150522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1300150520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2851dbcb310bf4b9bc20c96586b4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  publicPanel: {fileID: 0}
+  publicTextBox: {fileID: 0}
 --- !u!1 &1481343400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,6 +2147,7 @@ RectTransform:
   - {fileID: 1811357727}
   - {fileID: 1106135870}
   - {fileID: 1658856666}
+  - {fileID: 1300150521}
   m_Father: {fileID: 215433083}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2668,6 +2965,8 @@ GameObject:
   - component: {fileID: 1811357730}
   - component: {fileID: 1811357729}
   - component: {fileID: 1811357728}
+  - component: {fileID: 1811357732}
+  - component: {fileID: 1811357731}
   m_Layer: 5
   m_Name: Magic Choice Submenu
   m_TagString: Untagged
@@ -2709,16 +3008,8 @@ MonoBehaviour:
   - {fileID: 142277396}
   - {fileID: 1785598724}
   inputController: {fileID: 215433082}
-  fire:
-    name: Fire
-    manaCost: 20
-    damage: 100
-    isHealing: 0
-  heal:
-    name: Heal
-    manaCost: 15
-    damage: 150
-    isHealing: 1
+  fire: {fileID: 1811357732}
+  heal: {fileID: 1811357731}
 --- !u!114 &1811357729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,6 +3043,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1811357726}
+--- !u!114 &1811357731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811357726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c035b78ca3ba894aa518c835eb141e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Heal
+  manaCost: 15
+  damage: 100
+  isHealing: 1
+--- !u!114 &1811357732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811357726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c035b78ca3ba894aa518c835eb141e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Fire
+  manaCost: 20
+  damage: 100
+  isHealing: 0
 --- !u!1 &1865936750
 GameObject:
   m_ObjectHideFlags: 0

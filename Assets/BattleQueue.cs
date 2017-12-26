@@ -8,12 +8,16 @@ public class BattleQueue : MonoBehaviour {
     public List<Enemy> publicEnemies;
     public static List<Player> players;
     public static List<Enemy> enemies;
+    static List<Character> charactersToDelete;
 
     void Awake() {
         enemies = publicEnemies;
         players = publicPlayers;
 
         queue = new Queue<Character>();
+
+        charactersToDelete = new List<Character>();
+
         foreach (Player player in players)
         {
             queue.Enqueue(player);
@@ -27,6 +31,13 @@ public class BattleQueue : MonoBehaviour {
     }
 
     public static void Pop() {
+        foreach (Character c in charactersToDelete)
+        {
+            print("Removing " + c);
+            RemoveCharacter(c);
+        }
+        charactersToDelete.Clear();
+
         if (queue.Count > 0)
         {
             if (players.Count == 0)
@@ -41,12 +52,20 @@ public class BattleQueue : MonoBehaviour {
             }
 
             Character activeCharacter = queue.Dequeue();
-            activeCharacter.StartTurn();
+            while (activeCharacter == null)
+            {
+                activeCharacter = queue.Dequeue();
+            }
             queue.Enqueue(activeCharacter);
+            activeCharacter.StartTurn();
         }
     }
 
-    public static void RemoveCharacter(Character character)
+    public static void SetToRemoveCharacter(Character character)
+    {
+        charactersToDelete.Add(character);
+    }
+    static void RemoveCharacter(Character character)
     {
         if (character.GetType() == typeof(Player)) {
             players.Remove((Player)character);
@@ -54,5 +73,6 @@ public class BattleQueue : MonoBehaviour {
         else if (character.GetType() == typeof(Enemy)) {
             enemies.Remove((Enemy)character);
         }
+        DestroyImmediate(character.gameObject);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character {
+    public Action basicAttack;
 
     public PlayerInfoController playerInfo;
 
@@ -31,9 +32,15 @@ public class Player : Character {
     public void Defend()
     {
         defenseMultiplier = 2f;
+        BattleQueue.Pop();
+    }
+    public void ResetDefense()
+    {
+        defenseMultiplier = 1f;
     }
     public override void StartTurn()
     {
+        ResetDefense();
         playerInfo.inputController.ReturnToBaseMenu();
     }
 

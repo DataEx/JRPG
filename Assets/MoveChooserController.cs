@@ -35,7 +35,7 @@ public class MoveChooserController : Menu {
                 inputController.SwitchMenu(inputController.itemMenu);
                 break;
             case MenuOptions.Defend:
-                print("Defend");
+                RunMenuOption((int)MenuOptions.Defend, inputController.playerInfo.owner);
                 break;
         }
     }
@@ -43,17 +43,19 @@ public class MoveChooserController : Menu {
     public override void RunMenuOption(int menuOptionIndex, Character target)
     {
         Player owner = inputController.playerInfo.owner;
+        inputController.DisableMenu();
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Attack:
                 print("Attack " + target.name);
-                uint damageDone = owner.basicAttack.UseAction(target, owner);
+                owner.basicAttack.UseAction(target, owner);
                 break;
             case MenuOptions.Defend:
                 print("Defending");
                 owner.Defend();
                 break;
         }
+
     }
 
 }

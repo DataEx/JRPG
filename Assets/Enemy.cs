@@ -17,7 +17,7 @@ public class Enemy : Character {
         int playerIndex = Random.Range(0, BattleQueue.players.Count);
         Player target = BattleQueue.players[playerIndex];
         Action action = actions[actionIndex];
-        uint damageDealt = action.UseAction(target, this);
+        action.UseAction(target, this);
 
 //        Need to find way to say "I'm done with turn" --> Call Pop on Queue
     }
