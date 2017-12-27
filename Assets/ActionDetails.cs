@@ -17,7 +17,7 @@ public class ActionDetails : MonoBehaviour {
         textBox = publicTextBox;
     }
 
-    static void DisplayDetails(Character caster, Character target, Action action)
+    public static void DisplayDetails(Character caster, Character target, Action action)
     {
         string details = "";
         string targetName = caster == target ? "self" : target.name;

@@ -41,6 +41,8 @@ public class MagicMenu : Menu
     public override void RunMenuOption(int menuOptionIndex, Character target)
     {
         Player caster = inputController.playerInfo.owner;
+        inputController.DisableMenu();
+
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Fire:

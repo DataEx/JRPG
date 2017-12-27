@@ -42,6 +42,8 @@ public class ItemMenu : Menu {
 
     public override void RunMenuOption(int menuOptionIndex, Character target)
     {
+        inputController.DisableMenu();
+
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Potion:

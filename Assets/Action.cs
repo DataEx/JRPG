@@ -22,6 +22,7 @@ public class Action : MonoBehaviour
             target.DealDamage(damageDealt);
         }
         print(caster + " dealt " + damageDealt + " damage to " + target);
+        ActionDetails.DisplayDetails(caster, target, this);
         DamageVisualizer.SpawnDamageText(target, damageDealt, isHealing);
         AnimateAction(target);
     }

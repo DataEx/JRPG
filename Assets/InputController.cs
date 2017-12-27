@@ -92,8 +92,8 @@ public class InputController : MonoBehaviour {
     public void SwitchMenu(Menu newMenu) {
         //cursor.PlaySound();
         if (activeMenu != null)
-            activeMenu.gameObject.SetActive(false);
-        newMenu.gameObject.SetActive(true);
+            activeMenu.ui.SetActive(false);
+        newMenu.ui.gameObject.SetActive(true);
         activeMenu = newMenu;
 
         Transform nextCursorItem = activeMenu.GetNextCursorItem(-1);
@@ -104,7 +104,7 @@ public class InputController : MonoBehaviour {
     }
     public void DisableMenu()
     {
-        activeMenu.gameObject.SetActive(false);
+        activeMenu.ui.SetActive(false);
         activeMenu = null;
     }
 }

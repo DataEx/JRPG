@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -382,9 +382,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 1562376827}
   playerInfo: {fileID: 1678697049}
-  moveChooser: {fileID: 940815391}
-  magicMenu: {fileID: 1811357728}
-  itemMenu: {fileID: 1106135871}
+  moveChooser: {fileID: 1537341573}
+  magicMenu: {fileID: 1146375169}
+  itemMenu: {fileID: 546680278}
   characterPointer: {fileID: 1118121480}
   damageVisualizer: {fileID: 1713568969}
 --- !u!4 &215433083
@@ -419,7 +419,7 @@ MonoBehaviour:
   initialHealth: 200
   initialMana: 1000
   actions:
-  - {fileID: 245338316}
+  - {fileID: 245338319}
 --- !u!114 &245338316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +435,22 @@ MonoBehaviour:
   manaCost: 0
   damage: 100
   isHealing: 0
+--- !u!114 &245338319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 245338314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c2b048cbe97f148997ec508ac3f236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Aerial Strike
+  manaCost: 0
+  damage: 200
+  isHealing: 0
+  actionPrefab: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
 --- !u!1 &287101801
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +634,140 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 334136641}
+--- !u!1 &546680271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 546680272}
+  - component: {fileID: 546680278}
+  - component: {fileID: 546680277}
+  - component: {fileID: 546680276}
+  - component: {fileID: 546680275}
+  - component: {fileID: 546680274}
+  - component: {fileID: 546680273}
+  m_Layer: 5
+  m_Name: Item Choice Submenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &546680272
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1106135870}
+  m_Father: {fileID: 1558843808}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &546680273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df783c0b9cf05548aba06a042624ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Ether
+  manaCost: 0
+  damage: 50
+  isHealing: 1
+  actionPrefab: {fileID: 1240180990679148, guid: 2d8ce88c2dd7a8e488c1b47cdacfb23b,
+    type: 2}
+--- !u!114 &546680274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df783c0b9cf05548aba06a042624ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Potion
+  manaCost: 0
+  damage: 200
+  isHealing: 1
+  actionPrefab: {fileID: 1240180990679148, guid: 2d8ce88c2dd7a8e488c1b47cdacfb23b,
+    type: 2}
+--- !u!114 &546680275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Grenade
+  manaCost: 0
+  damage: 80
+  isHealing: 0
+--- !u!114 &546680276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Ether
+  manaCost: 0
+  damage: 50
+  isHealing: 1
+--- !u!114 &546680277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Potion
+  manaCost: 0
+  damage: 200
+  isHealing: 1
+--- !u!114 &546680278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546680271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833e4fe2954417949a629c63991e8d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuChoices:
+  - {fileID: 1142789735}
+  - {fileID: 287101802}
+  - {fileID: 1997176797}
+  inputController: {fileID: 215433082}
+  ui: {fileID: 1106135869}
+  potion: {fileID: 546680274}
+  ether: {fileID: 546680273}
+  grenade: {fileID: 546680275}
 --- !u!1 &629206536
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,9 +966,8 @@ GameObject:
   - component: {fileID: 940815388}
   - component: {fileID: 940815390}
   - component: {fileID: 940815389}
-  - component: {fileID: 940815391}
   m_Layer: 5
-  m_Name: Move Choice Menu
+  m_Name: Move Choice UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -835,13 +984,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 16652391}
-  m_Father: {fileID: 1558843808}
-  m_RootOrder: 1
+  m_Father: {fileID: 1537341572}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -22.1, y: -158.25}
-  m_SizeDelta: {x: -669.5, y: -335.2}
+  m_AnchoredPosition: {x: 0.000022888184, y: -0.000015258789}
+  m_SizeDelta: {x: 130.5, y: 114.53543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &940815389
 MonoBehaviour:
@@ -876,23 +1025,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940815387}
---- !u!114 &940815391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 940815387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5c0acd640975f84dbe47bc2a7480b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuChoices:
-  - {fileID: 334136642}
-  - {fileID: 1884270974}
-  - {fileID: 1112196461}
-  - {fileID: 1187809883}
-  inputController: {fileID: 215433082}
 --- !u!1001 &1025126072
 Prefab:
   m_ObjectHideFlags: 0
@@ -1056,12 +1188,8 @@ GameObject:
   - component: {fileID: 1106135870}
   - component: {fileID: 1106135873}
   - component: {fileID: 1106135872}
-  - component: {fileID: 1106135871}
-  - component: {fileID: 1106135876}
-  - component: {fileID: 1106135875}
-  - component: {fileID: 1106135874}
   m_Layer: 5
-  m_Name: Item Choice Submenu
+  m_Name: Item Choice Submenu UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,36 +1203,17 @@ RectTransform:
   m_GameObject: {fileID: 1106135869}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706962122}
-  m_Father: {fileID: 1558843808}
-  m_RootOrder: 3
+  m_Father: {fileID: 546680272}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 152.40009, y: -158.25}
-  m_SizeDelta: {x: -320.5, y: -335.2}
+  m_AnchoredPosition: {x: 153.16, y: -159.26}
+  m_SizeDelta: {x: 478.49, y: 119.3}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1106135871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1106135869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 833e4fe2954417949a629c63991e8d9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuChoices:
-  - {fileID: 1142789735}
-  - {fileID: 287101802}
-  - {fileID: 1997176797}
-  inputController: {fileID: 215433082}
-  potion: {fileID: 1106135876}
-  ether: {fileID: 1106135875}
-  grenade: {fileID: 1106135874}
 --- !u!114 &1106135872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,51 +1247,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106135869}
---- !u!114 &1106135874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1106135869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Grenade
-  manaCost: 0
-  damage: 80
-  isHealing: 0
---- !u!114 &1106135875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1106135869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Ether
-  manaCost: 0
-  damage: 50
-  isHealing: 1
---- !u!114 &1106135876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1106135869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Potion
-  manaCost: 0
-  damage: 200
-  isHealing: 1
 --- !u!1001 &1107719253
 Prefab:
   m_ObjectHideFlags: 0
@@ -1599,6 +1663,88 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1142789734}
+--- !u!1 &1146375165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1146375166}
+  - component: {fileID: 1146375169}
+  - component: {fileID: 1146375168}
+  - component: {fileID: 1146375167}
+  m_Layer: 5
+  m_Name: Magic Choice Submenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1146375166
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146375165}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 152.4, y: -158.25002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1811357727}
+  m_Father: {fileID: 1558843808}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146375167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146375165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3886744260c9c3747900dcd4e619b1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Heal
+  manaCost: 15
+  damage: 100
+  isHealing: 1
+  actionPrefab: {fileID: 1216743146998986, guid: 8698dcaf1b916354cb1d745bfa78f2e5,
+    type: 2}
+--- !u!114 &1146375168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146375165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c035b78ca3ba894aa518c835eb141e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Fire
+  manaCost: 20
+  damage: 100
+  isHealing: 0
+--- !u!114 &1146375169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146375165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ebb3478131c87409a04fe3979c1ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuChoices:
+  - {fileID: 142277396}
+  - {fileID: 1785598724}
+  inputController: {fileID: 215433082}
+  ui: {fileID: 1811357726}
+  fire: {fileID: 1146375168}
+  heal: {fileID: 1146375167}
 --- !u!1 &1163887043 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
@@ -1733,7 +1879,6 @@ GameObject:
   - component: {fileID: 1190333085}
   - component: {fileID: 1190333088}
   - component: {fileID: 1190333087}
-  - component: {fileID: 1190333086}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1760,26 +1905,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 171}
   m_SizeDelta: {x: 750, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1190333086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1190333084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7686cba88753854f84f7ac00e934a1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNameText: {fileID: 112668058}
-  owner: {fileID: 324861231}
-  inputController: {fileID: 215433082}
-  healthBar:
-    fill: {fileID: 0}
-    text: {fileID: 0}
-  manaBar:
-    fill: {fileID: 0}
-    text: {fileID: 0}
 --- !u!114 &1190333087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1987,8 +2112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2851dbcb310bf4b9bc20c96586b4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  publicPanel: {fileID: 0}
-  publicTextBox: {fileID: 0}
+  publicPanel: {fileID: 1190333084}
+  publicTextBox: {fileID: 112668058}
 --- !u!1 &1481343400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2182,54 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1481343400}
+--- !u!1 &1537341571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1537341572}
+  - component: {fileID: 1537341573}
+  m_Layer: 5
+  m_Name: Move Choice Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537341572
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1537341571}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.100037, y: -158.25002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 940815388}
+  m_Father: {fileID: 1558843808}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537341573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1537341571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c0acd640975f84dbe47bc2a7480b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuChoices:
+  - {fileID: 334136642}
+  - {fileID: 1884270974}
+  - {fileID: 1112196461}
+  - {fileID: 1187809883}
+  inputController: {fileID: 215433082}
+  ui: {fileID: 940815387}
 --- !u!1 &1558843804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,10 +2316,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1678697046}
-  - {fileID: 940815388}
-  - {fileID: 1811357727}
-  - {fileID: 1106135870}
+  - {fileID: 1537341572}
+  - {fileID: 1146375166}
   - {fileID: 1658856666}
+  - {fileID: 546680272}
   - {fileID: 1300150521}
   m_Father: {fileID: 215433083}
   m_RootOrder: 0
@@ -2419,7 +2592,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1558843808}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2964,11 +3137,8 @@ GameObject:
   - component: {fileID: 1811357727}
   - component: {fileID: 1811357730}
   - component: {fileID: 1811357729}
-  - component: {fileID: 1811357728}
-  - component: {fileID: 1811357732}
-  - component: {fileID: 1811357731}
   m_Layer: 5
-  m_Name: Magic Choice Submenu
+  m_Name: Magic Choice UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2985,31 +3155,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 629206537}
-  m_Father: {fileID: 1558843808}
-  m_RootOrder: 2
+  m_Father: {fileID: 1146375166}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 152.4, y: -158.25}
-  m_SizeDelta: {x: -320.5, y: -335.2}
+  m_AnchoredPosition: {x: -0.000015258789, y: -0.000015258789}
+  m_SizeDelta: {x: 479.5, y: 114.53543}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1811357728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1811357726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ebb3478131c87409a04fe3979c1ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuChoices:
-  - {fileID: 142277396}
-  - {fileID: 1785598724}
-  inputController: {fileID: 215433082}
-  fire: {fileID: 1811357732}
-  heal: {fileID: 1811357731}
 --- !u!114 &1811357729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3043,36 +3196,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1811357726}
---- !u!114 &1811357731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1811357726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c035b78ca3ba894aa518c835eb141e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Heal
-  manaCost: 15
-  damage: 100
-  isHealing: 1
---- !u!114 &1811357732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1811357726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c035b78ca3ba894aa518c835eb141e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Fire
-  manaCost: 20
-  damage: 100
-  isHealing: 0
 --- !u!1 &1865936750
 GameObject:
   m_ObjectHideFlags: 0

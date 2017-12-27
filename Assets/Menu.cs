@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour {
     public virtual Transform GetNextCursorItem(int currentIndex) { return null; }
     public virtual Transform GetPrevCursorItem(int currentIndex) { return null; }
     public virtual void SelectMenuItem(int currentIndex) { }
-
     public virtual void RunMenuOption(int menuOptionIndex, Character target) {}
+    public GameObject ui;
 
 }
