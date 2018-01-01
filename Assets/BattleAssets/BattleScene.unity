@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -165,8 +165,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.058823526, g: 0.052093003, b: 0.033737022, a: 1}
+  m_Intensity: 11
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 142277398}
   - component: {fileID: 142277397}
   m_Layer: 5
-  m_Name: Fire Text
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fire
+  m_Text: Cyclone
 --- !u!222 &142277398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -418,8 +418,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 200
   initialMana: 1000
+  animator: {fileID: 245338317}
   actions:
-  - {fileID: 245338319}
+  - {fileID: 245338320}
 --- !u!114 &245338316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +436,11 @@ MonoBehaviour:
   manaCost: 0
   damage: 100
   isHealing: 0
+--- !u!95 &245338317 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: f14b6f7503476eb4e9b2afc1cc05e719,
+    type: 3}
+  m_PrefabInternal: {fileID: 1290267700}
 --- !u!114 &245338319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +457,23 @@ MonoBehaviour:
   damage: 200
   isHealing: 0
   actionPrefab: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
+--- !u!114 &245338320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 245338314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32d7665f546ac54d8049216b5e63f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Fire
+  manaCost: 0
+  damage: 100
+  isHealing: 0
+  actionPrefab: {fileID: 1271910928672046, guid: 4d585f33cf816be42a5bfc864d95f9aa,
+    type: 2}
 --- !u!1 &287101801
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,9 +563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ea1939895f21649a25e44cb6924476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 1000
+  initialHealth: 5000
   initialMana: 10000
+  animator: {fileID: 324861235}
   basicAttack: {fileID: 324861232}
+  defendAction: {fileID: 324861237}
   playerInfo: {fileID: 1678697049}
 --- !u!114 &324861232
 MonoBehaviour:
@@ -559,6 +584,28 @@ MonoBehaviour:
   manaCost: 0
   damage: 100
   isHealing: 0
+--- !u!95 &324861235 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022,
+    type: 2}
+  m_PrefabInternal: {fileID: 1025126072}
+--- !u!114 &324861237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 324861230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a0387c07d1bbc4f814abf6798c8646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Defend
+  manaCost: 0
+  damage: 0
+  isHealing: 0
+  actionPrefab: {fileID: 1015287397285752, guid: 1b6423245eadc16498eb640a3f587bc5,
+    type: 2}
 --- !u!1 &334136641
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,9 +690,6 @@ GameObject:
   m_Component:
   - component: {fileID: 546680272}
   - component: {fileID: 546680278}
-  - component: {fileID: 546680277}
-  - component: {fileID: 546680276}
-  - component: {fileID: 546680275}
   - component: {fileID: 546680274}
   - component: {fileID: 546680273}
   m_Layer: 5
@@ -703,51 +747,6 @@ MonoBehaviour:
   isHealing: 1
   actionPrefab: {fileID: 1240180990679148, guid: 2d8ce88c2dd7a8e488c1b47cdacfb23b,
     type: 2}
---- !u!114 &546680275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 546680271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Grenade
-  manaCost: 0
-  damage: 80
-  isHealing: 0
---- !u!114 &546680276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 546680271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Ether
-  manaCost: 0
-  damage: 50
-  isHealing: 1
---- !u!114 &546680277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 546680271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7b72b2cb32ac5419e3849b36a78e7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Potion
-  manaCost: 0
-  damage: 200
-  isHealing: 1
 --- !u!114 &546680278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,12 +761,10 @@ MonoBehaviour:
   menuChoices:
   - {fileID: 1142789735}
   - {fileID: 287101802}
-  - {fileID: 1997176797}
   inputController: {fileID: 215433082}
   ui: {fileID: 1106135869}
   potion: {fileID: 546680274}
   ether: {fileID: 546680273}
-  grenade: {fileID: 546680275}
 --- !u!1 &629206536
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,8 +911,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 13.900024, y: -7.300049}
-  m_SizeDelta: {x: 88.4, y: 19.2}
+  m_AnchoredPosition: {x: 11.5, y: -5.7}
+  m_SizeDelta: {x: 78.44, y: 29.86}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &932217967
 MonoBehaviour:
@@ -938,7 +935,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -949,7 +946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name
+  m_Text: Player
 --- !u!222 &932217968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1103,6 +1100,10 @@ Prefab:
     - target: {fileID: 400276, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0.70746905
+      objectReference: {fileID: 0}
+    - target: {fileID: 100096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
@@ -1466,6 +1467,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -83.6598
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
+      propertyPath: m_Name
+      value: Robot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
   m_IsPrefabParent: 0
@@ -1574,7 +1579,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1917745905}
   heightAbovePlayer: 2
   timeToMove: 0.5
-  cameraOffset: {x: 1, y: 1.5, z: 3}
+  cameraOffset: {x: 1, y: 1.5, z: 3.5}
 --- !u!4 &1118121481
 Transform:
   m_ObjectHideFlags: 0
@@ -1672,8 +1677,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1146375166}
   - component: {fileID: 1146375169}
-  - component: {fileID: 1146375168}
   - component: {fileID: 1146375167}
+  - component: {fileID: 1146375168}
   m_Layer: 5
   m_Name: Magic Choice Submenu
   m_TagString: Untagged
@@ -1703,14 +1708,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1146375165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3886744260c9c3747900dcd4e619b1a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a11203c4a8aff05419c82f6ae9755060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Heal
-  manaCost: 15
-  damage: 100
-  isHealing: 1
-  actionPrefab: {fileID: 1216743146998986, guid: 8698dcaf1b916354cb1d745bfa78f2e5,
+  actionName: Cyclone
+  manaCost: 100
+  damage: 200
+  isHealing: 0
+  actionPrefab: {fileID: 1010394343506166, guid: c2fde514a69097046b934009a5cff09d,
     type: 2}
 --- !u!114 &1146375168
 MonoBehaviour:
@@ -1720,13 +1725,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1146375165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c035b78ca3ba894aa518c835eb141e4, type: 3}
+  m_Script: {fileID: 11500000, guid: e58b6374c2de2124c8498e89bf7eec10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Fire
-  manaCost: 20
-  damage: 100
+  actionName: Holy
+  manaCost: 100
+  damage: 150
   isHealing: 0
+  actionPrefab: {fileID: 1098567970481252, guid: d2a97417bf5f2034f9b8453747ee8030,
+    type: 2}
 --- !u!114 &1146375169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,8 +1750,8 @@ MonoBehaviour:
   - {fileID: 1785598724}
   inputController: {fileID: 215433082}
   ui: {fileID: 1811357726}
-  fire: {fileID: 1146375168}
-  heal: {fileID: 1146375167}
+  cyclone: {fileID: 1146375167}
+  holy: {fileID: 1146375168}
 --- !u!1 &1163887043 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
@@ -1762,8 +1769,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 200
   initialMana: 1000
+  animator: {fileID: 1163887047}
   actions:
-  - {fileID: 1163887045}
+  - {fileID: 1163887049}
 --- !u!114 &1163887045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1795,6 +1803,28 @@ MonoBehaviour:
   manaCost: 0
   damage: 100
   isHealing: 0
+--- !u!95 &1163887047 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: cc633396b5f95da4b916357a5508ee4f,
+    type: 3}
+  m_PrefabInternal: {fileID: 1107719253}
+--- !u!114 &1163887049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1163887043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d3b9b60c17fa24b95713bd0d107a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Thunder
+  manaCost: 0
+  damage: 100
+  isHealing: 0
+  actionPrefab: {fileID: 1301302169816874, guid: 244504529821c494b8aeeafae9be590a,
+    type: 2}
 --- !u!1 &1187809882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +2001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 9.900024, y: -62.199997}
+  m_AnchoredPosition: {x: 9.900024, y: -75.6}
   m_SizeDelta: {x: 88.4, y: 19.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1197639161
@@ -2067,6 +2097,10 @@ Prefab:
     - target: {fileID: 400000, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
+      propertyPath: m_Name
+      value: Drone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
@@ -2751,7 +2785,6 @@ Transform:
   m_Children:
   - {fileID: 1142789735}
   - {fileID: 287101802}
-  - {fileID: 1997176797}
   m_Father: {fileID: 1106135870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2896,7 +2929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 9.900024, y: -28.099976}
+  m_AnchoredPosition: {x: 9.900024, y: -41.49997}
   m_SizeDelta: {x: 88.4, y: 19.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1737247599
@@ -2949,7 +2982,7 @@ GameObject:
   - component: {fileID: 1785598726}
   - component: {fileID: 1785598725}
   m_Layer: 5
-  m_Name: Heal Text
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3005,7 +3038,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Heal
+  m_Text: Holy
 --- !u!222 &1785598726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3503,80 +3536,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!1 &1997176796
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1997176797}
-  - component: {fileID: 1997176799}
-  - component: {fileID: 1997176798}
-  m_Layer: 5
-  m_Name: Grenade Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1997176797
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997176796}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1706962122}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -40.24997, y: 1.744339}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 1}
---- !u!114 &1997176798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997176796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 21
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Grenade
---- !u!222 &1997176799
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1997176796}
 --- !u!1 &2069190668
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,13 +13,15 @@ public class InputController : MonoBehaviour {
     public ItemMenu itemMenu;
     public CharacterPointer characterPointer;
     public DamageVisualizer damageVisualizer;
+    public static CharacterPointer staticCharacterPointer;
 
 
     Menu activeMenu;
 
     void Awake() {
-//        activeMenu = moveChooser;
-       // ReturnToBaseMenu();
+        //        activeMenu = moveChooser;
+        // ReturnToBaseMenu();
+        staticCharacterPointer = characterPointer;
     }
 
     void Update() {

@@ -7,21 +7,24 @@ public class Heal : Magic {
     GameObject instantiatedAction;
     bool actionActive = false;
 
-    public override void AnimateAction(Character target)
+    public override void AnimateAction()
     {
         instantiatedAction = Instantiate(actionPrefab);
         instantiatedAction.transform.position = target.transform.position;
         actionActive = true;
-        StartCoroutine(DestroyAfterTime());
+        StartCoroutine(DestroyAfterTime(caster, target));
     }
 
-    IEnumerator DestroyAfterTime()
+    IEnumerator DestroyAfterTime(Character caster, Character target )
     {
         float timeToDestroy = 2.5f;
-        yield return new WaitForSeconds(timeToDestroy);
+        yield return new WaitForSeconds(timeToDestroy / 2f);
+        DamageVisualizer.SpawnDamageText(target, damageDealt, isHealing);
+        yield return new WaitForSeconds(timeToDestroy / 2f);
+
         Destroy(instantiatedAction);
         instantiatedAction = null;
         actionActive = false;
-        FinishAction();
+        FinishAction(caster);
     }
 }

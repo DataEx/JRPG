@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MagicMenu : Menu
 {
-    enum MenuOptions { Fire, Heal}
-    public Magic fire;
-    public Magic heal;
+    enum MenuOptions { Cyclone, Holy}
+    public Magic cyclone;
+    public Magic holy;
  
 
     public override Transform GetNextCursorItem(int currentIndex)
@@ -29,11 +29,11 @@ public class MagicMenu : Menu
     {
         switch ((MenuOptions)currentIndex)
         {
-            case MenuOptions.Fire:
+            case MenuOptions.Cyclone:
                 inputController.characterPointer.SetInitialTargetEnemy();
                 break;
-            case MenuOptions.Heal:
-                inputController.characterPointer.SetInitialTargetPlayer();
+            case MenuOptions.Holy:
+                inputController.characterPointer.SetInitialTargetEnemy();
                 break;
         }
     }
@@ -45,19 +45,19 @@ public class MagicMenu : Menu
 
         switch ((MenuOptions)menuOptionIndex)
         {
-            case MenuOptions.Fire:
-                if (caster.HaveEnoughMana(fire.manaCost)) {
+            case MenuOptions.Cyclone:
+                if (caster.HaveEnoughMana(cyclone.manaCost)) {
                     print("Use Fire on " + target.name);
-                    caster.SpendMana(fire.manaCost);
-                    fire.UseAction(target, inputController.playerInfo.owner);
+                    caster.SpendMana(cyclone.manaCost);
+                    cyclone.UseAction(target, inputController.playerInfo.owner);
                 }
                 break;
-            case MenuOptions.Heal:
-                if (caster.HaveEnoughMana(heal.manaCost))
+            case MenuOptions.Holy:
+                if (caster.HaveEnoughMana(holy.manaCost))
                 {
                     print("Use Heal on " + target.name);
-                    caster.SpendMana(heal.manaCost);
-                    heal.UseAction(target, inputController.playerInfo.owner);
+                    caster.SpendMana(holy.manaCost);
+                    holy.UseAction(target, inputController.playerInfo.owner);
                 }
                 break;
         }

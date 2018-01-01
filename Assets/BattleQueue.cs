@@ -9,8 +9,11 @@ public class BattleQueue : MonoBehaviour {
     public static List<Player> players;
     public static List<Enemy> enemies;
     static List<Character> charactersToDelete;
+    public static BattleQueue instance;
 
     void Awake() {
+        instance = this;
+
         enemies = publicEnemies;
         players = publicPlayers;
 
@@ -30,7 +33,16 @@ public class BattleQueue : MonoBehaviour {
         Pop();
     }
 
-    public static void Pop() {
+    public static void ResetState()
+    {
+        ActionDetails.ResetDetails();
+        InputController.staticCharacterPointer.ResetCameraTransform();
+        if(instance)
+            instance.Invoke("Pop", 1.5f);
+    }
+
+
+    void Pop() {
         foreach (Character c in charactersToDelete)
         {
             print("Removing " + c);

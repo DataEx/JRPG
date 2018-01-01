@@ -19,11 +19,16 @@ public class ActionDetails : MonoBehaviour {
 
     public static void DisplayDetails(Character caster, Character target, Action action)
     {
+        panel.SetActive(true);
         string details = "";
         string targetName = caster == target ? "self" : target.name;
         details = String.Format("{0} casts {1} on {2}", caster.name, action.actionName, targetName);
         textBox.text = details;
     }
-
+    public static void ResetDetails()
+    {
+        panel.SetActive(false);
+        textBox.text = "";
+    }
 
 }

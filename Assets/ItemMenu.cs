@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemMenu : Menu {
-    enum MenuOptions { Potion, Ether, Grenade}
+    enum MenuOptions { Potion, Ether}
     public Item potion;
     public Item ether;
-    public Item grenade;
 
     public override Transform GetNextCursorItem(int currentIndex)
     {
@@ -34,9 +33,6 @@ public class ItemMenu : Menu {
             case MenuOptions.Ether:
                 inputController.characterPointer.SetInitialTargetPlayer();
                 break;
-            case MenuOptions.Grenade:
-                inputController.characterPointer.SetInitialTargetEnemy();
-                break;
         }
     }
 
@@ -53,10 +49,6 @@ public class ItemMenu : Menu {
             case MenuOptions.Ether:
                 print("Use Ether on " + target.name);
                 ether.UseAction(target, inputController.playerInfo.owner);
-                break;
-            case MenuOptions.Grenade:
-                print("Use Grenade on " + target.name);
-                grenade.UseAction(target, inputController.playerInfo.owner);
                 break;
         }
     }

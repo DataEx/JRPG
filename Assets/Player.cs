@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Character {
     public Action basicAttack;
+    public Action defendAction;
 
     public PlayerInfoController playerInfo;
 
@@ -32,7 +33,7 @@ public class Player : Character {
     public void Defend()
     {
         defenseMultiplier = 2f;
-        BattleQueue.Pop();
+        defendAction.UseAction(this, this);
     }
     public void ResetDefense()
     {

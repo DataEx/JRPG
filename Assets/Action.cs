@@ -9,11 +9,19 @@ public class Action : MonoBehaviour
     public uint damage;
     public bool isHealing;
 
+    protected uint damageDealt;
+
+    protected Character target;
+    protected Character caster;
 
     // Returns damage dealt
     public virtual void UseAction(Character target, Character caster)
     {
-        uint damageDealt = GetDamage();
+        // InputController.staticCharacterPointer.SetTarget(target);
+        this.caster = caster;
+        this.target = target;
+
+        damageDealt = GetDamage();
         if (isHealing)
             target.Heal(damageDealt);
         else
@@ -23,8 +31,8 @@ public class Action : MonoBehaviour
         }
         print(caster + " dealt " + damageDealt + " damage to " + target);
         ActionDetails.DisplayDetails(caster, target, this);
-        DamageVisualizer.SpawnDamageText(target, damageDealt, isHealing);
-        AnimateAction(target);
+        caster.AnimateCharacter(Character.CharacterPoses.Attacking);
+        Invoke("AnimateAction", 0.6f);
     }
 
     // Returns damage dealt
@@ -37,14 +45,16 @@ public class Action : MonoBehaviour
         return randomDamage;
     }
 
-    public virtual void FinishAction()
+    public virtual void FinishAction(Character caster)
     {
-        BattleQueue.Pop();
+        InputController.staticCharacterPointer.ResetCameraTransform();
+        caster.AnimateCharacter(Character.CharacterPoses.Base);
+        BattleQueue.ResetState();
     }
 
-    public virtual void AnimateAction(Character target)
+    public virtual void AnimateAction()
     {
-        FinishAction();
+        FinishAction(caster);
         // unique for each
         // when done, call finish action
     }
