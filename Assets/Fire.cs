@@ -8,6 +8,12 @@ public class Fire : Magic {
     GameObject instantiatedAction;
     bool actionActive = false;
 
+    public override void UseAction(Character target, Character caster)
+    {
+        base.UseAction(target, caster);
+        ActionDetails.MagicDisplayDetails(caster, target, this);
+    }
+
     public override void AnimateAction()
     {
         instantiatedAction = Instantiate(actionPrefab);

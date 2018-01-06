@@ -47,6 +47,8 @@ public class InputController : MonoBehaviour {
                 // Return to normal UI
                 characterPointer.DisablePointer();
                 characterPointer.ResetCameraTransform();
+                ActionDetails.ResetDetails();
+
             }
         }
         else if(activeMenu != null)

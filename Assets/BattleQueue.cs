@@ -45,7 +45,6 @@ public class BattleQueue : MonoBehaviour {
     void Pop() {
         foreach (Character c in charactersToDelete)
         {
-            print("Removing " + c);
             RemoveCharacter(c);
         }
         charactersToDelete.Clear();
@@ -54,12 +53,18 @@ public class BattleQueue : MonoBehaviour {
         {
             if (players.Count == 0)
             {
-                print("Game Over!");
+                ActionDetails.GameOverDisplayDetails();
+                // Fade out 
                 return;
             }
             if (enemies.Count == 0)
             {
-                print("Victory!");
+                ActionDetails.VictoryDisplayDetails();
+                foreach (Player p in players) {
+                    p.AnimateCharacter(Character.CharacterPoses.Victory);
+                }
+                // Player dances
+                // fade out
                 return;
             }
 

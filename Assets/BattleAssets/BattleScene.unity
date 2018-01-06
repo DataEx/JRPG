@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -441,22 +441,6 @@ Animator:
   m_PrefabParentObject: {fileID: 9500000, guid: f14b6f7503476eb4e9b2afc1cc05e719,
     type: 3}
   m_PrefabInternal: {fileID: 1290267700}
---- !u!114 &245338319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 245338314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c2b048cbe97f148997ec508ac3f236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Aerial Strike
-  manaCost: 0
-  damage: 200
-  isHealing: 0
-  actionPrefab: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
 --- !u!114 &245338320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,13 +547,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ea1939895f21649a25e44cb6924476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 5000
+  initialHealth: 10000
   initialMana: 10000
   animator: {fileID: 324861235}
-  basicAttack: {fileID: 324861232}
+  basicAttack: {fileID: 324861233}
   defendAction: {fileID: 324861237}
   playerInfo: {fileID: 1678697049}
---- !u!114 &324861232
+--- !u!114 &324861233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -577,12 +561,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 324861230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23fdf996edac09f458056a6602e4ed44, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cd394a8117b52042a7383e98fb96634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Basic Attack
   manaCost: 0
-  damage: 100
+  damage: 10000
   isHealing: 0
 --- !u!95 &324861235 stripped
 Animator:
@@ -911,7 +895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 11.5, y: -5.7}
+  m_AnchoredPosition: {x: 11.5, y: -5.700012}
   m_SizeDelta: {x: 78.44, y: 29.86}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &932217967
@@ -1083,7 +1067,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400276, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.060806748
+      value: 0.060806744
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_WarningMessage
@@ -1471,6 +1455,18 @@ Prefab:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
   m_IsPrefabParent: 0
@@ -1772,22 +1768,6 @@ MonoBehaviour:
   animator: {fileID: 1163887047}
   actions:
   - {fileID: 1163887049}
---- !u!114 &1163887045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1163887043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c2b048cbe97f148997ec508ac3f236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Aerial Strike
-  manaCost: 0
-  damage: 200
-  isHealing: 0
-  actionPrefab: {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 2}
 --- !u!114 &1163887046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,6 +2081,18 @@ Prefab:
     - target: {fileID: 100002, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
       propertyPath: m_Name
       value: Drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f14b6f7503476eb4e9b2afc1cc05e719, type: 3}

@@ -11,6 +11,19 @@ public class ItemMenu : Menu {
     {
         int nextIndex = (currentIndex + 1) % menuChoices.Length;
         Transform nextMenuChoice = menuChoices[nextIndex];
+        if (nextIndex == 0)
+        {
+            if (potion.description != "")
+            {
+                ActionDetails.ActionDescription(potion.description);
+            }
+        }
+        else
+        {
+            if (ether.description != "") {
+                ActionDetails.ActionDescription(ether.description);
+            }
+        }
         return nextMenuChoice;
     }
 
@@ -43,11 +56,9 @@ public class ItemMenu : Menu {
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Potion:
-                print("Use Potion on " + target.name);
                 potion.UseAction(target, inputController.playerInfo.owner);
                 break;
             case MenuOptions.Ether:
-                print("Use Ether on " + target.name);
                 ether.UseAction(target, inputController.playerInfo.owner);
                 break;
         }

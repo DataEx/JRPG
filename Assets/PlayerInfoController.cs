@@ -40,6 +40,11 @@ public class PlayerInfoController : MonoBehaviour {
 
     void Awake()
     {
+        Image image = GetComponent<Image>();
+        Color color = image.color;
+        color.a = 0.65f;
+        image.color = color;
+
         healthBar.MaxValue = owner.initialHealth;
         healthBar.CurrentValue = owner.GetCurrentHealth();
         manaBar.MaxValue = owner.initialMana;

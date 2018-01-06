@@ -1,13 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MagicMenu : Menu
 {
+    public Text[] manaCostTexts;
     enum MenuOptions { Cyclone, Holy}
     public Magic cyclone;
     public Magic holy;
- 
+
+    public Color greyColor;
+    public Color blackColor;
+
+    public override void Awake()
+    {
+        base.Awake();
+        manaCostTexts[0].text = cyclone.manaCost.ToString() + " MP";
+        manaCostTexts[1].text = holy.manaCost.ToString() + " MP";
+    }
+    void Start() {
+        Player player = inputController.playerInfo.owner;
+
+        if (player.HaveEnoughMana(cyclone.manaCost))
+        {
+            menuChoices[0].GetComponent<Text>().color = blackColor;
+            manaCostTexts[0].color = blackColor;
+        }
+        else
+        {
+            menuChoices[0].GetComponent<Text>().color = greyColor;
+            manaCostTexts[0].color = greyColor;
+        }
+
+        if (player.HaveEnoughMana(holy.manaCost))
+        {
+            menuChoices[1].GetComponent<Text>().color = blackColor;
+            manaCostTexts[1].color = blackColor;
+        }
+        else
+        {
+            menuChoices[1].GetComponent<Text>().color = greyColor;
+            manaCostTexts[1].color = greyColor;
+        }
+
+    }
+
 
     public override Transform GetNextCursorItem(int currentIndex)
     {
@@ -27,13 +65,19 @@ public class MagicMenu : Menu
 
     public override void SelectMenuItem(int currentIndex)
     {
+        Player caster = inputController.playerInfo.owner;
         switch ((MenuOptions)currentIndex)
         {
             case MenuOptions.Cyclone:
-                inputController.characterPointer.SetInitialTargetEnemy();
+                if (caster.HaveEnoughMana(cyclone.manaCost)) {
+                    inputController.characterPointer.SetInitialTargetEnemy();
+                }
                 break;
             case MenuOptions.Holy:
-                inputController.characterPointer.SetInitialTargetEnemy();
+                if (caster.HaveEnoughMana(holy.manaCost))
+                {
+                    inputController.characterPointer.SetInitialTargetEnemy();
+                }
                 break;
         }
     }
@@ -46,19 +90,12 @@ public class MagicMenu : Menu
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Cyclone:
-                if (caster.HaveEnoughMana(cyclone.manaCost)) {
-                    print("Use Fire on " + target.name);
-                    caster.SpendMana(cyclone.manaCost);
-                    cyclone.UseAction(target, inputController.playerInfo.owner);
-                }
+                caster.SpendMana(cyclone.manaCost);
+                cyclone.UseAction(target, inputController.playerInfo.owner);
                 break;
             case MenuOptions.Holy:
-                if (caster.HaveEnoughMana(holy.manaCost))
-                {
-                    print("Use Heal on " + target.name);
-                    caster.SpendMana(holy.manaCost);
-                    holy.UseAction(target, inputController.playerInfo.owner);
-                }
+                caster.SpendMana(holy.manaCost);
+                holy.UseAction(target, inputController.playerInfo.owner);
                 break;
         }
     }

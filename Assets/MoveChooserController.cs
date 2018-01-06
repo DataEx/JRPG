@@ -9,6 +9,14 @@ public class MoveChooserController : Menu {
     public override Transform GetNextCursorItem(int currentIndex) {
         int nextIndex = (currentIndex + 1) % menuChoices.Length;
         Transform nextMenuChoice = menuChoices[nextIndex];
+        if (nextIndex == (int)MenuOptions.Defend)
+        {
+            ActionDetails.ActionDescription(inputController.playerInfo.owner.defendAction.description);
+        }
+        else
+        {
+            ActionDetails.ResetDetails();
+        }
         return nextMenuChoice;
     }
 
@@ -18,6 +26,14 @@ public class MoveChooserController : Menu {
         if (nextIndex < 0)
             nextIndex = menuChoices.Length - 1;
         Transform prevMenuChoice = menuChoices[nextIndex];
+        if (nextIndex == (int)MenuOptions.Defend)
+        {
+            ActionDetails.ActionDescription(inputController.playerInfo.owner.defendAction.description);
+        }
+        else
+        {
+            ActionDetails.ResetDetails();
+        }
         return prevMenuChoice;
     }
 
@@ -25,7 +41,6 @@ public class MoveChooserController : Menu {
         switch ((MenuOptions)currentIndex)
         {
             case MenuOptions.Attack:
-                print("Select Attack Target");
                 inputController.characterPointer.SetInitialTargetEnemy();
                 break;
             case MenuOptions.Magic:
@@ -47,11 +62,9 @@ public class MoveChooserController : Menu {
         switch ((MenuOptions)menuOptionIndex)
         {
             case MenuOptions.Attack:
-                print("Attack " + target.name);
                 owner.basicAttack.UseAction(target, owner);
                 break;
             case MenuOptions.Defend:
-                print("Defending");
                 owner.Defend();
                 break;
         }

@@ -8,16 +8,22 @@ public class Player : Character {
 
     public PlayerInfoController playerInfo;
 
-    public override void DealDamage(uint damage)
+    public override bool DealDamage(uint damage)
     {
-        base.DealDamage(damage);
+        bool isDead = base.DealDamage(damage);
         playerInfo.DecreaseHealth(damage);
+        return isDead;
     }
 
     public override void Heal(uint healingDone)
     {
         base.Heal(healingDone);
         playerInfo.IncreaseHealth(healingDone);
+    }
+
+    public override void HealMana(uint healingDone) {
+        base.HealMana(healingDone);
+        playerInfo.IncreaseMana(healingDone);
     }
 
     public bool HaveEnoughMana(uint manaCost)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour {
 
@@ -11,5 +12,13 @@ public class Menu : MonoBehaviour {
     public virtual void SelectMenuItem(int currentIndex) { }
     public virtual void RunMenuOption(int menuOptionIndex, Character target) {}
     public GameObject ui;
+
+    public virtual void Awake()
+    {
+        Image image = ui.GetComponent<Image>();
+        Color color = image.color;
+        color.a = 0.65f;
+        image.color = color;
+    }
 
 }

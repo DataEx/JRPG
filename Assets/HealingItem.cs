@@ -8,6 +8,13 @@ public class HealingItem : Item {
     GameObject instantiatedAction;
     bool actionActive = false;
 
+    public override void UseAction(Character target, Character caster)
+    {
+        base.UseAction(target, caster);
+        ActionDetails.ItemDisplayDetails(caster, target, this);
+    }
+
+
     public override void AnimateAction()
     {
         instantiatedAction = Instantiate(actionPrefab);

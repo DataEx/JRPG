@@ -4,38 +4,47 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
     public uint initialHealth;
-    public uint initialMana;    
+    public uint initialMana;
     protected uint currentHealth;
     protected uint currentMana;
     protected float defenseMultiplier = 1f;
 
-    public enum CharacterPoses { Base, Attacking, Dead };
-    public Animator animator; 
+    public enum CharacterPoses { Base, Attacking, Dead, Victory };
+    public Animator animator;
 
     public virtual void Awake() {
         currentHealth = initialHealth;
         currentMana = initialMana;
     }
 
-    public virtual void DealDamage(uint damage) {
+    public virtual bool DealDamage(uint damage) {
+        bool isDestroyed = false;
         currentHealth = currentHealth - damage;
         if (currentHealth > initialHealth)
         {
-            DestroySelf();
+            isDestroyed = true;
         }
-        print(this.name + "Health: " + this.currentHealth + " / " + this.initialHealth);
+        return isDestroyed;
     }
 
     public virtual void Heal(uint healingDone) {
         currentHealth = currentHealth + healingDone;
         currentHealth = (uint)Mathf.Min(currentHealth, initialHealth);
-        print(this.name + "Health: " + this.currentHealth + " / " + this.initialHealth);
+    }
+
+    public virtual void HealMana(uint healingdone)
+    {
+        currentMana = currentMana + healingdone;
+        currentMana = (uint)Mathf.Min(currentMana, initialMana);
     }
 
     public uint GetCurrentHealth() {
         return currentHealth;
     }
-
+    public uint GetInitialHealth()
+    {
+        return initialHealth;
+    }
     public uint GetCurrentMana()
     {
         return currentMana;
@@ -46,9 +55,8 @@ public class Character : MonoBehaviour {
         return defenseMultiplier;
     }
 
-    void DestroySelf()
+    public void DestroySelf()
     {
-        print(this.name + " is dead!");
         AnimateCharacter(CharacterPoses.Dead);
         BattleQueue.SetToRemoveCharacter(this);
     }
@@ -74,6 +82,9 @@ public class Character : MonoBehaviour {
                 break;
             case CharacterPoses.Dead:
                 trigger = "Die";
+                break;
+            case CharacterPoses.Victory:
+                trigger = "Victory";
                 break;
         }
         return trigger;

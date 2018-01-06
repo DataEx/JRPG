@@ -19,6 +19,8 @@ public class CharacterPointer : MonoBehaviour {
     bool canMove = true;
     public Vector3 cameraOffset;
 
+    Coroutine moveToCoroutine = null;
+
     void Start () {
         defaultPosition = mainCamera.transform.position;
         defaultRotation = mainCamera.transform.rotation;
@@ -36,16 +38,22 @@ public class CharacterPointer : MonoBehaviour {
         SetTarget(enemies[0]);
     }
     public void AdvancePointerForward() {
-        if (target is Player)
-            AdvancePointerBackwardPlayer();
-        else if (target is Enemy)
-            AdvancePointerBackwardEnemy();
+        if (moveToCoroutine == null)
+        {
+            if (target is Player)
+                AdvancePointerBackwardPlayer();
+            else if (target is Enemy)
+                AdvancePointerBackwardEnemy();
+        }
     }
     public void AdvancePointerBackward() {
-        if (target is Player)
-            AdvancePointerForwardPlayer();
-        else if (target is Enemy)
-            AdvancePointerForwardEnemy();
+        if (moveToCoroutine == null)
+        {
+            if (target is Player)
+                AdvancePointerForwardPlayer();
+            else if (target is Enemy)
+                AdvancePointerForwardEnemy();
+        }
     }
 
     void AdvancePointerForwardPlayer() {
@@ -77,6 +85,7 @@ public class CharacterPointer : MonoBehaviour {
     }
     
     public void SetTarget(Character newTarget) {
+        ActionDetails.TargetDisplayDetails(newTarget);
         MoveToCharacter(newTarget);
         target = newTarget;
     }
@@ -91,6 +100,10 @@ public class CharacterPointer : MonoBehaviour {
         return pointerObject.activeSelf;
     }
     public void ResetCameraTransform() {
+        if (moveToCoroutine != null) {
+            StopCoroutine(moveToCoroutine);
+            moveToCoroutine = null;
+        }
         mainCamera.transform.position = defaultPosition;
         mainCamera.transform.rotation = defaultRotation;
     }
@@ -100,7 +113,8 @@ public class CharacterPointer : MonoBehaviour {
 
     public void MoveToCharacter(Character character)
     {
-        StartCoroutine(MoveToCharacterCoroutine(character));
+//        if(moveToCoroutine == null)
+            moveToCoroutine = StartCoroutine(MoveToCharacterCoroutine(character));
     }
 
     IEnumerator MoveToCharacterCoroutine(Character character)
@@ -127,5 +141,6 @@ public class CharacterPointer : MonoBehaviour {
         }
         mainCamera.transform.position = finalPosition;
         canMove = true;
+        moveToCoroutine = null; 
     }
 }

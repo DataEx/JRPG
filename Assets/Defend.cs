@@ -8,6 +8,13 @@ public class Defend : Action {
     GameObject instantiatedAction;
     bool actionActive = false;
 
+
+    public override void UseAction(Character target, Character caster)
+    {
+        base.UseAction(target, caster);
+        ActionDetails.DefendDisplayDetails(caster);
+    }
+
     public override void AnimateAction()
     {
         instantiatedAction = Instantiate(actionPrefab);
