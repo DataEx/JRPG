@@ -1,6 +1,10 @@
 # JRPG
 
-## The game (JRPG.exe) is located within the Executable folder
+![](https://raw.githubusercontent.com/DataEx/JRPG/master/Pics/JRPG_Pic.png)
+A RPG battle environment inspired by early the Final Fantasy games
+
+
+## The game (JRPG.exe) is located within the zip in the Executable folder
 
 ## Controls
 
