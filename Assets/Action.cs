@@ -25,12 +25,8 @@ public class Action : MonoBehaviour
         this.target = target;
         damageDealt = GetDamage();
         targetIsDestroyed = false;
-        if (isHealing)
-            target.Heal(damageDealt);
-        else
-        {
+        if (!isHealing) { 
             damageDealt = (uint) (damageDealt * (1f /target.GetDefenseMultiplier()));
-            targetIsDestroyed = target.DealDamage(damageDealt);
         }
         caster.AnimateCharacter(Character.CharacterPoses.Attacking);
         Invoke("AnimateAction", 0.6f);
@@ -48,6 +44,14 @@ public class Action : MonoBehaviour
 
     public virtual void FinishAction(Character caster)
     {
+        if (isHealing)
+        {
+            target.Heal(damageDealt);
+        }
+        else
+        {
+            targetIsDestroyed = target.DealDamage(damageDealt);
+        }
         InputController.staticCharacterPointer.ResetCameraTransform();
         caster.AnimateCharacter(Character.CharacterPoses.Base);
         if (targetIsDestroyed)

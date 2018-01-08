@@ -23,6 +23,12 @@ public class DamageVisualizer : MonoBehaviour {
         text.SetCharacter(character);
         text.SetValue(amount);
         if (isHealing)
+        {
             text.IsHealing();
+        }
+        else
+        {
+            character.AnimateCharacter(Character.CharacterPoses.Damaged);
+        }
     }
 }

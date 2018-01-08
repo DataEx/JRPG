@@ -9,7 +9,7 @@ public class Character : MonoBehaviour {
     protected uint currentMana;
     protected float defenseMultiplier = 1f;
 
-    public enum CharacterPoses { Base, Attacking, Dead, Victory };
+    public enum CharacterPoses { Base, Attacking, Damaged, Dead, Victory };
     public Animator animator;
 
     public virtual void Awake() {
@@ -85,6 +85,9 @@ public class Character : MonoBehaviour {
                 break;
             case CharacterPoses.Victory:
                 trigger = "Victory";
+                break;
+            case CharacterPoses.Damaged:
+                trigger = "Damaged";
                 break;
         }
         return trigger;

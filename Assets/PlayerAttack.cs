@@ -12,13 +12,7 @@ public class PlayerAttack : Action {
         targetIsDestroyed = false;
 
         damageDealt = GetDamage();
-        if (isHealing)
-            target.Heal(damageDealt);
-        else
-        {
-            damageDealt = (uint)(damageDealt * (1f / target.GetDefenseMultiplier()));
-            targetIsDestroyed = target.DealDamage(damageDealt);
-        }
+        damageDealt = (uint)(damageDealt * (1f / target.GetDefenseMultiplier()));
         ActionDetails.AttackDisplayDetails(caster, target);
         AnimateAction();
     }

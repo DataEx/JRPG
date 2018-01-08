@@ -10,6 +10,7 @@ public class BattleQueue : MonoBehaviour {
     public static List<Enemy> enemies;
     static List<Character> charactersToDelete;
     public static BattleQueue instance;
+    public GameObject creditsPage;
 
     void Awake() {
         instance = this;
@@ -37,7 +38,7 @@ public class BattleQueue : MonoBehaviour {
     {
         ActionDetails.ResetDetails();
         InputController.staticCharacterPointer.ResetCameraTransform();
-        if(instance)
+        if (instance)
             instance.Invoke("Pop", 1.5f);
     }
 
@@ -54,17 +55,18 @@ public class BattleQueue : MonoBehaviour {
             if (players.Count == 0)
             {
                 ActionDetails.GameOverDisplayDetails();
+                StartCoroutine(AnimateCreditsIn());
                 // Fade out 
                 return;
             }
             if (enemies.Count == 0)
             {
                 ActionDetails.VictoryDisplayDetails();
+                StartCoroutine(AnimateCreditsIn());
                 foreach (Player p in players) {
                     p.AnimateCharacter(Character.CharacterPoses.Victory);
                 }
-                // Player dances
-                // fade out
+
                 return;
             }
 
@@ -91,5 +93,11 @@ public class BattleQueue : MonoBehaviour {
             enemies.Remove((Enemy)character);
         }
         DestroyImmediate(character.gameObject);
+    }
+
+    IEnumerator AnimateCreditsIn()
+    {
+        yield return new WaitForSeconds(3f);
+        creditsPage.SetActive(true);
     }
 }
